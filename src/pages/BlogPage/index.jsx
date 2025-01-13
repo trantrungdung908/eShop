@@ -2,10 +2,10 @@ import BreadCrumb from "@/components/BreadCrumb";
 import { PATHS } from "@/constants/path";
 import React from "react";
 import { Link } from "react-router-dom";
-import BlogSideBar from "./components/BlogSideBar";
 import BlogList from "./components/BlogList";
 import Pagination from "@/components/Pagination";
 import useBlogPage from "./components/useBlogPage";
+import BlogSideBar from "./components/BlogSidebar";
 
 const BlogPage = () => {
   const { blogsListProps, pagiProps, blogCateProps } = useBlogPage();
