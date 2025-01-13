@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BlogList from "./components/BlogList";
 import Pagination from "@/components/Pagination";
 import useBlogPage from "./components/useBlogPage";
-import BlogSideBar from "./components/BlogSidebar";
+import BlogSide from "./components/BlogSide";
 
 const BlogPage = () => {
   const { blogsListProps, pagiProps, blogCateProps } = useBlogPage();
@@ -36,7 +36,7 @@ const BlogPage = () => {
               <Pagination {...pagiProps} />
             </div>
             <aside className="col-lg-3">
-              <BlogSideBar {...blogCateProps} />
+              <BlogSide {...blogCateProps} />
             </aside>
           </div>
         </div>
