@@ -1,6 +1,7 @@
 import React from "react";
 
-const HomeBenefits = () => {
+const HomeBenefits = ({ services }) => {
+  const { sale, return: returns, shipping, support } = services;
   return (
     <div className="icon-boxes-container mt-2 mb-2 bg-transparent">
       <div className="container">
@@ -11,8 +12,8 @@ const HomeBenefits = () => {
                 <i className="icon-rocket" />
               </span>
               <div className="icon-box-content">
-                <h3 className="icon-box-title">Free Shipping</h3>
-                <p>Orders $50 or more</p>
+                <h3 className="icon-box-title">{shipping?.title}</h3>
+                <p>{shipping?.description}</p>
               </div>
             </div>
           </div>
@@ -22,8 +23,8 @@ const HomeBenefits = () => {
                 <i className="icon-rotate-left" />
               </span>
               <div className="icon-box-content">
-                <h3 className="icon-box-title">Free Returns</h3>
-                <p>Within 30 days</p>
+                <h3 className="icon-box-title">{returns?.title}</h3>
+                <p>{returns?.description}</p>
               </div>
             </div>
           </div>
@@ -33,8 +34,8 @@ const HomeBenefits = () => {
                 <i className="icon-info-circle" />
               </span>
               <div className="icon-box-content">
-                <h3 className="icon-box-title">Get 20% Off 1 Item</h3>
-                <p>when you sign up</p>
+                <h3 className="icon-box-title">{sale?.title}</h3>
+                <p>{sale?.description}</p>
               </div>
             </div>
           </div>
@@ -44,8 +45,8 @@ const HomeBenefits = () => {
                 <i className="icon-life-ring" />
               </span>
               <div className="icon-box-content">
-                <h3 className="icon-box-title">We Support</h3>
-                <p>24/7 amazing services</p>
+                <h3 className="icon-box-title">{support?.title}</h3>
+                <p>{support?.description}</p>
               </div>
             </div>
           </div>

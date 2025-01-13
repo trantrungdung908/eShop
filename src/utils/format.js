@@ -6,6 +6,11 @@ export const transNumberToPercent = (number) => {
   return number * 100;
 };
 
+export const formatCurrency = (data, type = "vi-VN") => {
+  if (!data) return 0;
+  return data.toLocaleString(type);
+};
+
 export const formatDate = (date, formatType = TIME_DISPLAYS.DATE) => {
   if (!!!date) return;
   return moment(date).format(formatType);

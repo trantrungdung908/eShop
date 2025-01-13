@@ -1,6 +1,11 @@
-import React from "react";
+import owlCarousels from "@/utils/owlCarousel";
+import React, { useEffect } from "react";
 
-const HomeBrand = ({ homeData }) => {
+const HomeBrand = ({ brands }) => {
+  useEffect(() => {
+    owlCarousels();
+  }, [brands]);
+
   return (
     <div className="container">
       <div

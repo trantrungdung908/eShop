@@ -9,72 +9,80 @@ import HomeSocial from "./components/HomeSocial";
 import useHomePage from "./useHomePage";
 
 const HomePage = () => {
-  const { homeProps } = useHomePage();
-  useEffect(() => {
-    function owlCarousels($wrap, options) {
-      if ($.fn.owlCarousel) {
-        var owlSettings = {
-          items: 1,
-          loop: true,
-          margin: 0,
-          responsiveClass: true,
-          nav: true,
-          navText: [
-            '<i class="icon-angle-left">',
-            '<i class="icon-angle-right">',
-          ],
-          dots: true,
-          smartSpeed: 400,
-          autoplay: false,
-          autoplayTimeout: 15000,
-        };
-        if (typeof $wrap == "undefined") {
-          $wrap = $("body");
-        }
-        if (options) {
-          owlSettings = $.extend({}, owlSettings, options);
-        }
+  const {
+    introProps,
+    hotProductProps,
+    dealProps,
+    brandProps,
+    featuredProps,
+    serviceProps,
+    getDealProps,
+  } = useHomePage();
+  // useEffect(() => {
+  //   function owlCarousels($wrap, options) {
+  //     if ($.fn.owlCarousel) {
+  //       var owlSettings = {
+  //         items: 1,
+  //         loop: true,
+  //         margin: 0,
+  //         responsiveClass: true,
+  //         nav: true,
+  //         navText: [
+  //           '<i class="icon-angle-left">',
+  //           '<i class="icon-angle-right">',
+  //         ],
+  //         dots: true,
+  //         smartSpeed: 400,
+  //         autoplay: false,
+  //         autoplayTimeout: 15000,
+  //       };
+  //       if (typeof $wrap == "undefined") {
+  //         $wrap = $("body");
+  //       }
+  //       if (options) {
+  //         owlSettings = $.extend({}, owlSettings, options);
+  //       }
 
-        // Init all carousel
-        $wrap.find('[data-toggle="owl"]').each(function () {
-          var $this = $(this),
-            newOwlSettings = $.extend(
-              {},
-              owlSettings,
-              $this.data("owl-options")
-            );
+  //       // Init all carousel
+  //       $wrap.find('[data-toggle="owl"]').each(function () {
+  //         var $this = $(this),
+  //           newOwlSettings = $.extend(
+  //             {},
+  //             owlSettings,
+  //             $this.data("owl-options")
+  //           );
 
-          $this.owlCarousel(newOwlSettings);
-        });
-      }
-    }
-    owlCarousels();
-  }, []);
+  //         $this.owlCarousel(newOwlSettings);
+  //       });
+  //     }
+  //   }
+  //   owlCarousels();
+  // }, []);
 
   return (
     <div>
       <main className="main">
-        <HomeIntro {...homeProps} />
+        <HomeIntro {...introProps} />
 
-        <HomeFeatured />
+        <HomeFeatured {...hotProductProps} />
 
         <div className="mb-7 mb-lg-11" />
 
-        <HomeDeals />
+        <HomeDeals {...dealProps} />
 
-        <HomeBrand {...homeProps} />
+        <HomeBrand {...brandProps} />
         <div className="container">
           <hr className="mt-3 mb-6" />
         </div>
         <div className="container">
           <hr className="mt-5 mb-6" />
         </div>
-        <HomeFeaturedProducts />
+        <HomeFeaturedProducts {...featuredProps} />
         <div className="container">
           <hr className="mt-5 mb-0" />
         </div>
-        <HomeBenefits />
-        <HomeSocial />
+        <HomeBenefits {...serviceProps} />
+        <HomeSocial {...getDealProps} />
       </main>
     </div>
   );

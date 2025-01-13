@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const { slug } = product;
+  const { slug } = product || {};
   const detailPath = `${PATHS.PRODUCTS}/${slug}`;
   const dispatch = useDispatch();
 

@@ -1,16 +1,33 @@
 import React from "react";
+import Button from "@/components/Button";
+import { MESSAGE, REGEX, REQUIRED_MESSAGE } from "@/constants/validate";
+import { useForm } from "react-hook-form";
 
-const HomeSocial = () => {
+const HomeSocial = ({ handleSubscribeDeal }) => {
+  const {
+    reset,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    email: "",
+  });
+
+  // Handle submit
+  const _onSubmit = (email) => {
+    handleSubscribeDeal?.(email, reset);
+  };
   return (
     <div className="container">
       <div
         className="cta cta-separator cta-border-image cta-half mb-0"
         style={{
-          backgroundImage: "url(assets/images/demos/demo-3/bg-2.jpg)",
+          backgroundImage: "url(/assets/images/demos/demo-3/bg-2.jpg)",
         }}
       >
         <div className="cta-border-wrapper bg-white">
           <div className="row">
+            {/* Socials */}
             <div className="col-lg-6">
               <div className="cta-wrapper cta-text text-center">
                 <h3 className="cta-title">Shop Social</h3>
@@ -62,6 +79,8 @@ const HomeSocial = () => {
                 </div>
               </div>
             </div>
+
+            {/* Form Get Deal */}
             <div className="col-lg-6">
               <div className="cta-wrapper text-center">
                 <h3 className="cta-title">Get the Latest Deals</h3>
@@ -70,27 +89,29 @@ const HomeSocial = () => {
                   receive <span className="text-primary">$20 coupon</span> for
                   first shopping{" "}
                 </p>
-                <form action="#">
+                <form onSubmit={handleSubmit(_onSubmit)}>
                   <div className="input-group">
                     <input
-                      type="email"
+                      type="text"
                       className="form-control"
                       placeholder="Enter your Email Address"
-                      aria-label="Email Adress"
-                      required
+                      {...register("email", {
+                        required: REQUIRED_MESSAGE.email,
+                        pattern: {
+                          value: REGEX.email,
+                          message: MESSAGE.email,
+                        },
+                      })}
                     />
                     <div className="input-group-append">
-                      <button
-                        className="btn btn-primary btn-rounded"
-                        type="submit"
-                      >
+                      <Button className="btn-rounded" type="submit">
                         <i className="icon-long-arrow-right" />
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </form>
-                <p className="form-error text-left">
-                  Please fill in this field
+                <p className="form-error text-left" style={{ minHeight: 23 }}>
+                  {errors?.email?.message || ""}
                 </p>
               </div>
             </div>
